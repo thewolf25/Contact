@@ -24,4 +24,9 @@ export class ContactItemComponent implements OnInit {
     this.slideItem.close();
     this.deleteItem.emit(this.contact);
   }
+
+  contactInfo(tel:string){
+    this.slideItem.close();
+    this.router.navigateByUrl('/tabs/tab4/'+tel);
+  }
 }
