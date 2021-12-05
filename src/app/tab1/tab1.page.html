@@ -1,17 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Contact
     </ion-title>
+    <ion-buttons slot="end" (click)="addContact()">
+      <ion-icon name="person-add-outline" style="padding-right: 10px;"></ion-icon>     
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div slot="fixed" style="width:100% ; background-color:white;" >
+  <ion-item  >
+    <ion-searchbar animated [(ngModel)]="searchText" style="width: 50%;display:inline-block;margin:0" autocomplete="on"  ></ion-searchbar>
+    <ion-select placeholder="Select Category" [(ngModel)]="category">
+      <ion-select-option value="amis">Amis</ion-select-option>
+      <ion-select-option value="famille">Famille</ion-select-option>
+      <ion-select-option value="professionel">Professionel</ion-select-option>
+      <ion-select-option value="autre">Autre</ion-select-option>
+    </ion-select>
+  </ion-item>
+  </div>
+  <ion-grid style="margin-top: 3%">
+    <ion-row>
+      <ion-col >
+  <ion-list >
+    <ion-item-sliding *ngFor="let contact of contactList |contactFilter : category : searchText  " #slidingItem>   
+    <app-contact-item  [contact] = "contact" [slideItem] = "slidingItem" (deleteItem)="deleteContact($event)"></app-contact-item>
+  </ion-item-sliding>
+  </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

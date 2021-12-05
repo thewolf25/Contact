@@ -1,17 +1,85 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Update Contact</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="updateContact()" [disabled]="!form.valid">
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form [formGroup]="form">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="6">
+          <ion-item>
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" autocomplete autocorrect formControlName="nom"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="6">
+          <ion-item>
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            <ion-label position="floating">Prenom</ion-label>
+            <ion-textarea row="3" formControlName="prenom"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="6">
+          <ion-item>
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input row="3" formControlName="email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="6">
+          <ion-item>
+            <ion-icon slot="start" name="call-outline"></ion-icon>
+            <ion-label position="floating">Telephone 1</ion-label>
+            <ion-input type="number" formControlName="tel1"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="6">
+          <ion-item>
+            <ion-icon slot="start" name="call-outline"></ion-icon>
+            <ion-label position="floating">Telephone 2</ion-label>
+            <ion-input type="number" formControlName="tel2"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      <ion-col size-sm="6" offset-sm="6">
+        <ion-item>
+          <ion-icon name="caret-forward-outline"></ion-icon>
+          <ion-select placeholder="Selectionner la categorie" formControlName="category">
+            <ion-select-option value="amis">Amis</ion-select-option>
+            <ion-select-option value="famille">Famille</ion-select-option>
+            <ion-select-option value="professionel">Professionel</ion-select-option>
+            <ion-select-option value="autre">Autre</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <!-- <app-image-picker (imagePick)="onImagePicked($event)"></app-image-picker> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
 </ion-content>

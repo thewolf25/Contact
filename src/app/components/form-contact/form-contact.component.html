@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
     </ion-buttons>
-    <ion-title>Add Contact</ion-title>
+    <ion-title> {{ action }} Contact</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="addContact()" [disabled]="!form.valid">
         <ion-icon slot="icon-only" name="checkmark"></ion-icon>
@@ -81,5 +81,4 @@
       </ion-row>
     </ion-grid>
   </form>
-
 </ion-content>
